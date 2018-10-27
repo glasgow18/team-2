@@ -3,6 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var sqlite3 = require('sqlite3').verbose();
+
+var db = new sqlite3.Database('./database/database.db', (err) => {
+  if (err) {
+    console.log("Failed to connect to db", err);
+  } else {
+    console.log("Connected to db");
+  }
+});
+
+module.exports.db = db;
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
