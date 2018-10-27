@@ -1,6 +1,8 @@
 package com.example.discovery.discovery;
 
 import android.app.DownloadManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -30,50 +32,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button searchActivity = findViewById(R.id.searchButton);
 
-//        final EditText keywords = (EditText) findViewById(R.id.editText);
-//
-//        RequestQueue request = Volley.newRequestQueue(this);
-//        String test = "http://www.google.co.uk";
-//
-//        StringRequest stringR = new StringRequest(Request.Method.GET, test, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                keywords.setText("Here is the response " + response.substring(0, 100));
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                keywords.setText("An error occured");
-//            }
-//        });
-//
-//        request.add(stringR);
+        searchActivity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
+                final EditText keywords = findViewById(R.id.editText);
+                String search = keywords.getText().toString();
 
+                if (search.isEmpty()) {
 
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("search", search);
+                    startActivity(intent);
+                }
 
+            }
 
-//        Button searchActivity = (Button) findViewById(R.id.searchButton);
-//
-//        searchActivity.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                String search = keywords.getText().toString();
-//
-//                if (search.isEmpty())
-//                {
-////                   showErrorDialog(search, 0);
-//
-//                }
-//
-//
-//
-//
-//            }
-//
-//
-//        });
+        });
 
     }
 }
