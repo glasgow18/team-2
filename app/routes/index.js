@@ -33,6 +33,7 @@ router.get('/activities', function(req, res, next) {
 
 router.post('/activities/add/:name/:price/:address/:lat/:lng/:phone?/:email?/:website?/:extra?', function(req, res, next) { 
   res.send(req.params);
+  //Make undefined parametres null to insert into the db
   if (req.params.phone == undefined) {
     req.params.phone = null;
   }
@@ -52,6 +53,20 @@ router.post('/activities/add/:name/:price/:address/:lat/:lng/:phone?/:email?/:we
           ${req.params.lat}, ${req.params.lng}, ${req.params.phone}, ${req.params.email}, ${req.params.website}, ${req.params.extra}
           )`);
   console.log(req.params);
+});
+
+router.post('/keywords/add/:keywords', function(req, res, next) { 
+  var splits = req.params.keywords.split(",");
+  console.log(splits);
+  for (var i = 0; i < splits.length; i++) {
+    db.run(`INSERT INTO keyword (word) VALUES ("${splits[i].trim()}")`, function(err) {
+      //We can just ignore duplicate keywords
+      console.log(err);
+    })
+    };
+  
+  res.send(req.param);
+
 });
 
 module.exports = router;
