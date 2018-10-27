@@ -4,6 +4,8 @@ INSERT INTO activity (
 	address,
 	lat,
 	lng,
+	contact_phone_number,
+	contact_website,
 	extra_info
 ) VALUES (
 	"JPMorgan Chase & Co",
@@ -11,6 +13,8 @@ INSERT INTO activity (
 	"45 Waterloo St, Glasgow G2 6HS",
 	55.8601998,
 	-4.2618775,
+	"0141 228 5000",
+	"jpmorganchase.com",
 	"Big smashing bank"	
 );
 

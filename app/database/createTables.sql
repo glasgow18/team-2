@@ -5,6 +5,9 @@ CREATE TABLE activity (
 	address text	NOT NULL,
 	lat float		NOT NULL,
 	lng float		NOT NULL,
+	contact_phone_number text,
+	contact_email text,
+	contact_website text,
 	extra_info text
 );
 
