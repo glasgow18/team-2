@@ -1,25 +1,26 @@
 CREATE TABLE activity (
-	id int			PRIMARY_KEY AUTO_INCREMENT,
-	name text		NOT_NULL,
-	price float		NOT_NULL,
-	address text	NOT_NULL,
-	gmap_link text  NOT_NULL,
+	id integer PRIMARY KEY,
+	name text		NOT NULL,
+	price float		NOT NULL,
+	address text	NOT NULL,
+	lat float		NOT NULL,
+	lng float		NOT NULL,
 	extra_info text
 );
 
 CREATE TABLE review (
-	id int			PRIMARY_KEY AUTO_INCREMENT,
-	activity_id int	NOT_NULL REFERENCES activity_id(id),
-	content text	NOT_NULL
+	id integer PRIMARY KEY,
+	activity_id int	NOT NULL REFERENCES activity_id(id),
+	content text	NOT NULL
 );
 
 CREATE TABLE keyword (
-	id int			PRIMARY_KEY AUTO_INCREMENT,
-	word text		NOT_NULL
+	id integer PRIMARY KEY,
+	word text		NOT NULL UNIQUE
 );
 
 CREATE TABLE activity_to_keyword (
-	activity_id int	NOT_NULL REFERENCES activity_id(id),
-	keyword_id  int	NOT_NULL	REFERENCES keyword_id(id),
+	activity_id int	NOT NULL REFERENCES activity_id(id),
+	keyword_id  int	NOT NULL	REFERENCES keyword_id(id),
 	PRIMARY KEY (activity_id, keyword_id)
 );
