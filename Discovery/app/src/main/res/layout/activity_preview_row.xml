@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/listViewData"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/activityName"
+            android:layout_width="176dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="Activity Name"
+            android:textColor="#000"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activityName"
+            android:layout_alignStart="@+id/activityName"
+            android:layout_marginTop="4dp"
+            android:text="19 Address, G81 15G"
+            android:textColor="#000"
+            android:textSize="16dp" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toStartOf="@+id/activityName" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="50dp"
+            android:layout_height="16dp"
+            android:layout_below="@+id/address"
+            android:layout_alignBottom="@+id/mapView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="125dp"
+            android:layout_marginBottom="40dp"
+            android:layout_toEndOf="@+id/mapView"
+            android:text="Price" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
