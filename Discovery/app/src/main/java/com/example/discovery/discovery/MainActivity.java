@@ -37,12 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*try {
-            showImage();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("IO EXception!!");
-        }*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -68,13 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showImage() throws MalformedURLException, IOException {
-        URL url = new URL("https://cdn.teslarati.com/wp-content/uploads/2017/11/Roadster_Front_34_1-e1512593855725.jpg");
-        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        ImageView i = findViewById(R.id.image);
-        i.setImageBitmap(bmp);
 
-    }
 }
 
 

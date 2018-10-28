@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Discovery</string>
+    <string name="title_activity_picturetest">picturetest</string>
 </resources>
