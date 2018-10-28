@@ -42,11 +42,11 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        ActivityPreview test5 = new ActivityPreview(1,"testjkndsa", "19 adfj, adhfjkl aa", (float) 13.23, "55.4", "-4.2");
-        ActivityPreview test4 = new ActivityPreview(2,"tesjkdt", "a", (float) 53.5, "112.32", "29.977333");
-        ActivityPreview test1 = new ActivityPreview(3,"test", "a", (float) 46.5, "123", "123");
-        ActivityPreview test2 = new ActivityPreview(4,"test2", "a", (float) 435, "123", "123");
-        ActivityPreview test3 = new ActivityPreview(5,"test3", "a", (float) 345, "123", "123");
+        ActivityPreview test5 = new ActivityPreview(1,"testjkndsa",  (float) 13.23, "55.4", "-4.2");
+        ActivityPreview test4 = new ActivityPreview(2,"tesjkdt", (float) 53.5, "112.32", "29.977333");
+        ActivityPreview test1 = new ActivityPreview(3,"gtown",  (float) 46.5, "55.86", "-4.26");
+        ActivityPreview test2 = new ActivityPreview(4,"test2",  (float) 435, "123", "123");
+        ActivityPreview test3 = new ActivityPreview(5,"test3",  (float) 345, "123", "123");
         activityPreviews.add(test1);
         activityPreviews.add(test2);
         activityPreviews.add(test3);
@@ -63,6 +63,8 @@ public class SearchActivity extends AppCompatActivity {
                 //Start a new intent and throw to new activity
                 Intent intent = new Intent(getApplicationContext(), ActivityDetails.class);
                 intent.putExtra("activityId" , Integer.toString(activityPreviews.get(position).getActivityId()));
+                intent.putExtra("activityFullURL" , activityPreviews.get(position).getFullURL());
+                intent.putExtra("activityName", activityPreviews.get(position).getActivityName());
                 startActivity(intent);
             }
         });
@@ -115,10 +117,9 @@ public class SearchActivity extends AppCompatActivity {
             TextView price = view.findViewById(R.id.price);
             ImageView thumbnail = view.findViewById(R.id.thumbnail);
             activityName.setText(activityPreviews.get(position).getActivityName());
-            address.setText(activityPreviews.get(position).getAddress());
             price.setText(Float.toString(activityPreviews.get(position).getPrice()));
 
-            Picasso.with(parent.getContext()).load(activityPreviews.get(position).getURL()).into(thumbnail);
+            Picasso.with(parent.getContext()).load(activityPreviews.get(position).getThumbURL()).into(thumbnail);
 
 
             return view;
