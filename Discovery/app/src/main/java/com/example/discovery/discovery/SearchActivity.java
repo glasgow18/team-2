@@ -2,6 +2,7 @@ package com.example.discovery.discovery;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,11 +42,11 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        ActivityPreview test5 = new ActivityPreview("testjkndsa", "19 adfj, adhfjkl aa", (float) 13.23, "123", "123", null);
-        ActivityPreview test4 = new ActivityPreview("tesjkdt", "a", (float) 53.5, "123", "123",null);
-        ActivityPreview test1 = new ActivityPreview("test", "a", (float) 46.5, "123", "123",null);
-        ActivityPreview test2 = new ActivityPreview("test2", "a", (float) 435, "123", "123",null);
-        ActivityPreview test3 = new ActivityPreview("test3", "a", (float) 345, "123", "123", "https://i.imgur.com/iHsr4Nd.png");
+        ActivityPreview test5 = new ActivityPreview(1,"testjkndsa", "19 adfj, adhfjkl aa", (float) 13.23, "55.4", "-4.2");
+        ActivityPreview test4 = new ActivityPreview(2,"tesjkdt", "a", (float) 53.5, "112.32", "29.977333");
+        ActivityPreview test1 = new ActivityPreview(3,"test", "a", (float) 46.5, "123", "123");
+        ActivityPreview test2 = new ActivityPreview(4,"test2", "a", (float) 435, "123", "123");
+        ActivityPreview test3 = new ActivityPreview(5,"test3", "a", (float) 345, "123", "123");
         activityPreviews.add(test1);
         activityPreviews.add(test2);
         activityPreviews.add(test3);
@@ -60,7 +61,9 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Start a new intent and throw to new activity
-
+                Intent intent = new Intent(getApplicationContext(), ActivityDetails.class);
+                intent.putExtra("activityId" , Integer.toString(activityPreviews.get(position).getActivityId()));
+                startActivity(intent);
             }
         });
 

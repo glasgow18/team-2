@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 String search = keywords.getText().toString();
 
                 if (search.isEmpty()) {
-
-                }else{
+                } else {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     intent.putExtra("search", search);
                     startActivity(intent);
@@ -61,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
     }
-
-
 }
 
 

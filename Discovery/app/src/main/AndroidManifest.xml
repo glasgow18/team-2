@@ -22,7 +22,8 @@
         <activity
             android:name=".picturetest"
             android:label="@string/title_activity_picturetest"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActivityDetails"></activity>
     </application>
 
 </manifest>

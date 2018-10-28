@@ -2,30 +2,25 @@ package com.example.discovery.discovery;
 
 public class ActivityPreview {
 
-    private String longitude, latitude, activityName, address, url;
+    private String activityName, address, url;
     private float price;
+    private int activityId;
 
-    public ActivityPreview(String activityName, String address, float price, String longitude, String latitude, String url) {
+    public ActivityPreview(int activityId, String activityName, String address, float price, String latitude, String longitude) {
 
+        this.activityId = activityId;
         this.activityName = activityName;
         this.address = address;
         this.price = price;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.url = url;
+        this.url = "http://maps.google.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=15&size=200x200&sensor=false";
 
     }
 
-    public String getLongitude() {
-        return longitude;
+    public int getActivityId() {
+        return activityId;
     }
-
     public String getAddress() {
         return address;
-    }
-
-    public String getLatitude() {
-        return latitude;
     }
 
     public String getActivityName() {
@@ -37,4 +32,6 @@ public class ActivityPreview {
     }
 
     public String getURL() { return url; }
+
+
 }
