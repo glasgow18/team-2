@@ -19,9 +19,10 @@ router.get('/activities', function(req, res, next) {
         console.log(err.message);
       }
         //TODO: Add rest of table columns
-        var o = JSON.stringify([row.id, row.name, row.address, row.lat, row.lng]);
-        console.log(o);
-        data.push(o);
+        var o = JSON.stringify([row.id, row.name, row.price, row.address, row.lat, row.lng]);
+        var test = {id: row.id, name: row.name, price: row.price, address: row.address, lat: row.lat, lng: row.lat, phone: null, email: null, website: null, extra: null};
+        console.log(test);
+        data.push(test);
         console.log(data);
     },
     function() {
@@ -36,7 +37,6 @@ router.get('/activities/search/:keywords', function (req, res, next) {
 
   var splits = req.params.keywords.toLowerCase().split(",");
   var keyword_ids = [];
-  var activities = [];
   console.log(splits.length);
   console.log(splits[0]);
   console.log("TRYING");
@@ -93,7 +93,7 @@ router.get('/activities/search/:keywords', function (req, res, next) {
         }, function() {
           console.log("counter"); 
 
-        }
+        }   
 );
       }
     });
