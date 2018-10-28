@@ -1,10 +1,13 @@
 package com.example.discovery.discovery;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,6 +25,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -32,6 +38,7 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
     List<ActivityPreview> activityPreviews = new ArrayList<>();
+    ProgressDialog pd;
 
 
     @Override
@@ -42,16 +49,19 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        ActivityPreview test5 = new ActivityPreview(1,"testjkndsa",  (float) 13.23, "55.4", "-4.2");
-        ActivityPreview test4 = new ActivityPreview(2,"tesjkdt", (float) 53.5, "112.32", "29.977333");
-        ActivityPreview test1 = new ActivityPreview(3,"gtown",  (float) 46.5, "55.86", "-4.26");
-        ActivityPreview test2 = new ActivityPreview(4,"test2",  (float) 435, "123", "123");
-        ActivityPreview test3 = new ActivityPreview(5,"test3",  (float) 345, "123", "123");
+
+
+
+
+
+        ActivityPreview test4 = new ActivityPreview(2,"Outdoor Environmental Day Service", (float) 0.0, "55.899668", "-3.272208");
+        ActivityPreview test1 = new ActivityPreview(3,"Long fence to make sound on at Vogrie",  (float) 0.0, "55.857549", "-2.992875");
+        ActivityPreview test2 = new ActivityPreview(4,"Wheelchair friendly Cycle Path with 500m long tunnel",  (float) 0.0, "55.941456", "-3.172207");
+        ActivityPreview test3 = new ActivityPreview(5,"Bendy Tunnel with darkness",  (float) 0.0, "55.907921", "-3.260044");
         activityPreviews.add(test1);
         activityPreviews.add(test2);
         activityPreviews.add(test3);
         activityPreviews.add(test4);
-        activityPreviews.add(test5);
         ListView activityList = findViewById(R.id.activityListView);
 
         ActivityAdapter activityAdapter = new ActivityAdapter();
@@ -70,7 +80,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         RequestQueue request = Volley.newRequestQueue(this);
-        String test = "http://www.google.co.uk";
+        String test = "http://localhost:8080/activities";
 
         Bundle extras = getIntent().getExtras();
         final String search = extras.get("search").toString();
@@ -78,7 +88,7 @@ public class SearchActivity extends AppCompatActivity {
         StringRequest stringR = new StringRequest(Request.Method.GET, test, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("Here is the response " + response.substring(0, 100));
+                System.out.println("Here is the response " + response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -86,6 +96,8 @@ public class SearchActivity extends AppCompatActivity {
                 System.out.println("An error occured");
             }
         });
+
+
 
         request.add(stringR);
 
@@ -126,6 +138,7 @@ public class SearchActivity extends AppCompatActivity {
 
         }
     }
+
 
 
 
